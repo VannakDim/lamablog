@@ -44,7 +44,8 @@ export const addPost = (req, res) => {
       // req.body.img,
       req.body.cat,
       req.body.date,
-      userInfo.id,
+      "3"
+      // userInfo.id,
     ];
 
     db.query(q, [values], (err, data) => {
