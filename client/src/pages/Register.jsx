@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import {axiosInstance} from "../config/axios";
 
 const Register = () => {
   const [inputs, setInputs] = useState({
@@ -13,6 +13,7 @@ const Register = () => {
 
   const navigate = useNavigate();
 
+
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -20,7 +21,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://apiblog-24cj.onrender.com/api/auth/register", inputs);
+      await axiosInstance.post("/auth/register", inputs);
       navigate("/login");
     } catch (err) {
       setError(err.response.data);
